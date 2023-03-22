@@ -12,7 +12,6 @@ export const homepageText = `
   <p>But of what remains, shall torment, shame, and any despicable thing imaginable to get their team to the top, even if it means selling your soul for a championship (jury is still out on Bobby, because people Michigan don't win championships).</p>
   <p>Do you have the time, to listen to me whine, about nothing and everything at all once.</p>
   <p>Sorry, got distracted. But let the games...BEGIN!!.</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 `;
 
 /*   STEP 3   */
