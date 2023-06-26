@@ -160,7 +160,7 @@ const processRegularSeason = async ({rosters, leagueData, curSeason, week, regul
 		const data = matchupRes.json();
 		matchupsJsonPromises.push(data)
 		if (!matchupRes.ok) {
-			throw new Error(data);
+			console.error(data);
 		}
 	}
 	const matchupsData = await waitForAll(...matchupsJsonPromises).catch((err) => { console.error(err); });
@@ -398,6 +398,7 @@ const processPlayoffs = async ({curSeason, playoffRecords, year, week, rosters})
 		const fptsPerGame = round(pSD.fptsFor / (pSD.wins + pSD.losses + pSD.ties));
 		pSD.fptsPerGame = fptsPerGame;
 		pSD.year = year;
+		pSD.rosterID = rosterID;
 
 		// add season long points entry
 		playoffRecords.addSeasonLongPoints({

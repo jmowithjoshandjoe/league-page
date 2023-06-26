@@ -27,7 +27,7 @@
 
     $: roster = rosters[rosterID];
 
-    $: coOwners = year && rosterID ? leagueTeamManagers.teamManagersMap[year][rosterID].managers.length > 0 : roster.co_owners;
+    $: coOwners = year && rosterID ? leagueTeamManagers.teamManagersMap[year][rosterID].managers.length > 1 : roster.co_owners;
 
     $: commissioner = viewManager.managerID ? leagueTeamManagers.users[viewManager.managerID].is_owner : false;
 
@@ -56,9 +56,11 @@
     })
 
     const changeManager = (newManager, noscroll = false) => {
+        if(!newManager) {
+            goto(`/managers`);
+        }
         manager = newManager;
-
-        goto(`/manager?manager=${manager}`, {noscroll})
+        goto(`/manager?manager=${newManager}`, {noscroll});
     }
 </script>
 
@@ -298,7 +300,7 @@
 
     {#if !loading}
         <!-- Favorite player -->
-        <ManagerFantasyInfo {viewManager} {players} />
+        <ManagerFantasyInfo {viewManager} {players} {changeManager} />
     {/if}
 
     <ManagerAwards {leagueTeamManagers} tookOver={viewManager.tookOver} {awards} {records} {rosterID} managerID={viewManager.managerID} />
